@@ -16,7 +16,7 @@ concurrency:
 
 defaults:
   run:
-    working_directory: docs
+    working-directory: docs
 
 jobs:
   build:
