@@ -24,7 +24,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: ./docs
+    working-directory: docs
 
 jobs:
   # Build job
@@ -47,16 +47,15 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+          cache-dependency-path: 'docs/pnpm-lock.yaml'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        working-directory: docs
         run: pnpm install --frozen-lockfile
 
       - name: Build with VitePress
-        working-directory: docs
         run: pnpm run docs:build
         env:
           VUE_PROD_HYDRATION_MISMATCH_DETAILS_FLAG: '1'
